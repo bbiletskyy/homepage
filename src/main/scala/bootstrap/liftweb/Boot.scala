@@ -31,21 +31,22 @@ class Boot {
 
     // where to search snippet
     LiftRules.addToPackages("homepage")
-    //Schemifier.schemify(true, Schemifier.infoF _, User)
     Schemifier.schemify(true, Schemifier.infoF _, Message)
     Schemifier.schemify(true, Schemifier.infoF _, ImpressingItem)
 
     def sitemap() = SiteMap(
       Menu(Loc("Impressing", Link(List("index"), true, "/index.do"), "Impressing")),
-      Menu(Loc("Research", Link(List("research"), true, "/index.do"), "Research")),
-      Menu(Loc("Publications", Link("publications" :: Nil, true, "/publications.do"), "Publications"),
-        Menu(Loc("Papers", Link("publications" :: "papers" :: Nil, true, "/index.do"), "Papers")),
-        Menu(Loc("Talks", Link("publications" :: "talks" :: Nil, true, "/index.do"), "Talks"))),
+      Menu(Loc("Research", Link("static" :: "research" :: Nil, true, "/static/research/index.do"), "Research"),
+        Menu(Loc("Particlez", Link("static" :: "research" :: "particlez" :: Nil, true, "/static/research/index.do"), "Particlez")),
+        Menu(Loc("Example1", Link("static" :: "research" :: "example1" :: Nil, true, "/static/research/example1.do"), "Example1")),
+        Menu(Loc("Example2", Link("static" :: "research" :: "example2" :: Nil, true, "/static/research/example2.do"), "Example2"))),
+      Menu(Loc("Publications", Link("publications" :: Nil, true, "/publications/index.do"), "Publications"),
+        Menu(Loc("Papers", Link("publications" :: "papers" :: Nil, true, "/publications/index.do"), "Papers")),
+        Menu(Loc("Talks", Link("publications" :: "talks" :: Nil, true, "/publications/talks.do"), "Talks"))),
       Menu(Loc("About Myself", Link(List("aboutmyself"), true, "/aboutmyself.do"), "About Myself")),
-      Menu(Loc("Contact", Link("contact" :: Nil, true, "/contact.do"), "Contact Me")),
-      Menu(Loc("Static", Link(List("static"), true, "/static/index.do"), "Static Content")))
+      Menu(Loc("Contact", Link("contact" :: Nil, true, "/contact.do"), "Contact Me")))
 
-    LiftRules.setSiteMapFunc(() => User.sitemapMutator(sitemap()))
+    LiftRules.setSiteMapFunc(() => sitemap())
 
     /*
      * Show the spinny image when an Ajax call starts
@@ -61,7 +62,7 @@ class Boot {
 
     LiftRules.early.append(makeUtf8)
 
-    LiftRules.loggedInTest = Full(() => User.loggedIn_?)
+    //LiftRules.loggedInTest = Full(() => User.loggedIn_?)
 
     S.addAround(DB.buildLoanWrapper)
   }

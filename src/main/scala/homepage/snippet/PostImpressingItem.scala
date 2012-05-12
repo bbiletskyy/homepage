@@ -19,7 +19,7 @@ class PostImpressingItem {
   def add(xhtml: NodeSeq): NodeSeq = {
     if (validateReqVars) {
       val ii: ImpressingItem = ImpressingItem.create
-      ii.title(titleReqVar.open_!).content(contentReqVar.open_!).youtubeIds(youtubeIdsReqVar.open_!).tag(youtubeIdsReqVar.open_!).save
+      ii.title(titleReqVar.open_!).content(contentReqVar.open_!).youtubeIds(youtubeIdsReqVar.open_!).tag(tagReqVar.open_!).save
     }
     bind("ii", xhtml,
       "title" --> text("Title", v => titleReqVar(Full(v))) % ("size" -> "50") % ("id" -> "title"),
