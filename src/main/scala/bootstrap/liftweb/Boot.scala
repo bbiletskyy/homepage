@@ -7,10 +7,9 @@ import _root_.net.liftweb.http.provider._
 import _root_.net.liftweb.sitemap._
 import _root_.net.liftweb.sitemap.Loc._
 import Helpers._
-import _root_.net.liftweb.mapper.{DB, ConnectionManager, Schemifier, DefaultConnectionIdentifier, StandardDBVendor}
-import _root_.java.sql.{Connection, DriverManager}
+import _root_.net.liftweb.mapper.{ DB, ConnectionManager, Schemifier, DefaultConnectionIdentifier, StandardDBVendor }
+import _root_.java.sql.{ Connection, DriverManager }
 import _root_.homepage.model._
-
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -19,11 +18,11 @@ import _root_.homepage.model._
 class Boot {
   def boot {
     if (!DB.jndiJdbcConnAvailable_?) {
-      val vendor = 
-	new StandardDBVendor(Props.get("db.driver") openOr "org.h2.Driver",
-			     Props.get("db.url") openOr 
-			     "jdbc:h2:lift_proto.db;AUTO_SERVER=TRUE",
-			     Props.get("db.user"), Props.get("db.password"))
+      val vendor =
+        new StandardDBVendor(Props.get("db.driver") openOr "org.h2.Driver",
+          Props.get("db.url") openOr
+            "jdbc:h2:lift_proto.db;AUTO_SERVER=TRUE",
+          Props.get("db.user"), Props.get("db.password"))
 
       LiftRules.unloadHooks.append(vendor.closeAllConnections_! _)
 
@@ -34,12 +33,15 @@ class Boot {
     LiftRules.addToPackages("homepage")
     Schemifier.schemify(true, Schemifier.infoF _, User)
 
-    // Build SiteMap
     def sitemap() = SiteMap(
-      Menu("Home") / "index" >> User.AddUserMenusAfter, // Simple menu form
-      // Menu with special Link
-      Menu(Loc("Static", Link(List("static"), true, "/static/index"), 
-	       "Static Content")))
+      Menu(Loc("About Myself", Link(List("index"), true, "/index.do"), "About Myself")),
+      Menu(Loc("Impressing", Link(List("impressing"), true, "/impressing.do"), "Impressing")),
+      Menu(Loc("Research", Link(List("research"), true, "/index.do"), "Research")),
+      Menu(Loc("Publications", Link("publications" :: Nil, true, "/publications.do"), "Publications"), 
+          Menu(Loc("Papers", Link("publications":: "papers" :: Nil, true, "/index.do"), "Papers")),
+          Menu(Loc("Talks", Link("publications":: "talks" :: Nil, true, "/index.do"), "Talks"))),
+      Menu(Loc("Contact", Link("contact" :: Nil, true, "/index.do"), "Contact Me")),
+      Menu(Loc("Static", Link(List("static"), true, "/static/index.do"), "Static Content")))
 
     LiftRules.setSiteMapFunc(() => User.sitemapMutator(sitemap()))
 
