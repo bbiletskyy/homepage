@@ -31,16 +31,17 @@ class Boot {
 
     // where to search snippet
     LiftRules.addToPackages("homepage")
-    Schemifier.schemify(true, Schemifier.infoF _, User)
+    //Schemifier.schemify(true, Schemifier.infoF _, User)
+    Schemifier.schemify(true, Schemifier.infoF _, Message)
 
     def sitemap() = SiteMap(
-      Menu(Loc("About Myself", Link(List("index"), true, "/index.do"), "About Myself")),
-      Menu(Loc("Impressing", Link(List("impressing"), true, "/impressing.do"), "Impressing")),
+      Menu(Loc("Impressing", Link(List("index"), true, "/index.do"), "Impressing")),
       Menu(Loc("Research", Link(List("research"), true, "/index.do"), "Research")),
-      Menu(Loc("Publications", Link("publications" :: Nil, true, "/publications.do"), "Publications"), 
-          Menu(Loc("Papers", Link("publications":: "papers" :: Nil, true, "/index.do"), "Papers")),
-          Menu(Loc("Talks", Link("publications":: "talks" :: Nil, true, "/index.do"), "Talks"))),
-      Menu(Loc("Contact", Link("contact" :: Nil, true, "/index.do"), "Contact Me")),
+      Menu(Loc("Publications", Link("publications" :: Nil, true, "/publications.do"), "Publications"),
+        Menu(Loc("Papers", Link("publications" :: "papers" :: Nil, true, "/index.do"), "Papers")),
+        Menu(Loc("Talks", Link("publications" :: "talks" :: Nil, true, "/index.do"), "Talks"))),
+      Menu(Loc("About Myself", Link(List("aboutmyself"), true, "/aboutmyself.do"), "About Myself")),
+      Menu(Loc("Contact", Link("contact" :: Nil, true, "/contact.do"), "Contact Me")),
       Menu(Loc("Static", Link(List("static"), true, "/static/index.do"), "Static Content")))
 
     LiftRules.setSiteMapFunc(() => User.sitemapMutator(sitemap()))
