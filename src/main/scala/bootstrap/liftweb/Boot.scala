@@ -33,6 +33,7 @@ class Boot {
     LiftRules.addToPackages("homepage")
     //Schemifier.schemify(true, Schemifier.infoF _, User)
     Schemifier.schemify(true, Schemifier.infoF _, Message)
+    Schemifier.schemify(true, Schemifier.infoF _, ImpressingItem)
 
     def sitemap() = SiteMap(
       Menu(Loc("Impressing", Link(List("index"), true, "/index.do"), "Impressing")),

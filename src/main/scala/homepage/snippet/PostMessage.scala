@@ -22,7 +22,8 @@ class PostMessage {
     val messages = Message.findAll
     val temp = messages.foldLeft(""){(str, msg) => str + " ### " + msg.text}
     bind("qp", xhtml,
-        "update" --> text("", v => qpx(Full(v))) % ("size" -> "10") % ("id" -> "update"),
+        "update" --> textarea("", v => qpx(Full(v))) % ("size" -> "10") % ("id" -> "update"),
+        //"update" --> text("", v => qpx(Full(v))) % ("size" -> "10") % ("id" -> "update"),
         "submit" --> submit(?("Update"), ()=>{}),
         "messages" --> <div>{temp}</div>
     )
