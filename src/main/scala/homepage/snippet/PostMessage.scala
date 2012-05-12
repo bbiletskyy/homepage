@@ -8,24 +8,20 @@ import net.liftweb.util.Helpers._
 import net.liftweb.common.Full
 import homepage.model.Message
 
-
-
 class PostMessage {
-  object qpx extends RequestVar(Full("")) // default is empty string
-  
+  object qpx extends RequestVar(Full(""))
+
   def show(xhtml: NodeSeq): NodeSeq = {
     val msgSent = !(qpx.isEmpty || qpx.open_!.length == 0)
-    if (msgSent){
-        val msg:Message = Message.create
-        msg.text(qpx.open_!).save
+    if (msgSent) {
+      val msg: Message = Message.create
+      msg.text(qpx.open_!).save
     }
     val messages = Message.findAll
-    val temp = messages.foldLeft(""){(str, msg) => str + " ### " + msg.text}
+    val temp = messages.foldLeft("") { (str, msg) => str + " ### " + msg.text }
     bind("qp", xhtml,
-        "update" --> textarea("", v => qpx(Full(v))) % ("size" -> "10") % ("id" -> "update"),
-        //"update" --> text("", v => qpx(Full(v))) % ("size" -> "10") % ("id" -> "update"),
-        "submit" --> submit(?("Update"), ()=>{}),
-        "messages" --> <div>{temp}</div>
-    )
+      "update" --> textarea("", v => qpx(Full(v)))/* % ("cols" -> "10") % ("rows" -> "5")*/ % ("id" -> "update"),
+      "submit" --> submit(?("Send Message"), () => {}),
+      "messages" --> <div>{ temp }</div>)
   }
 }

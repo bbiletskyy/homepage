@@ -7,9 +7,14 @@ object Message extends Message with KeyedMetaMapper[Long, Message] {
 }
 
 class Message extends KeyedMapper[Long, Message] {
-  def getSingleton = Message // what's the "meta" object
+  def getSingleton = Message 
   def primaryKeyField = id
 
   object id extends MappedLongIndex(this)
-  object text extends MappedString(this, 1400)
+  object text extends MappedText(this)
+  //  object text extends MappedTextarea(this, 2048) {
+  //    override def textareaRows = 5
+  //    override def textareaCols = 25
+  //    override def displayName = "Message body"
+  //  }
 }

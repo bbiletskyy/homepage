@@ -1,10 +1,12 @@
 <lift:surround with="default" at="content">
-    <div class="heading" id="title">Contact me</div>
-    <lift:postMessage.show form="POST">
-        <label for="update">Add a message:</label>
-        <qp:update/>
-        <qp:submit/>
-        <qp:messages/>
-    </lift:postMessage.show>
+	<h2>Contact</h2>
+	Please use this form to send me a message
+	<lift:postMessage.show form="POST">
+		<qp:update />
+		<br />
+		<qp:submit />
+		<br />
+		<qp:messages />
+	</lift:postMessage.show>
 </lift:surround>
 
