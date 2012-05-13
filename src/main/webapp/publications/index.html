@@ -1,7 +1,21 @@
 <div class="lift:surround?with=default;at=content">
-  <h2>Papers</h2>
-  <p>
-    Papers go here
-  </p>
+	<h2>Papers</h2>
+	<lift:papers.showPapers />
+	Please use this form to add a paper:
+	<lift:papers.addPaper form="POST">
+		<ap:authors />
+		<br />
+		<ap:title />
+		<br />
+		<ap:tag />
+		<br />
+		<ap:url />
+		<br />
+		<ap:url />
+		<br />
+		<ap:submit />
+		<br />
+		<ap:messages />
+	</lift:papers.addPaper>
 </div>
 
