@@ -1,5 +1,35 @@
 <div class="lift:surround?with=default;at=content">
-  <h2>Talks</h2>
-  Talks go here
+	<h2>Talks</h2>
+	<lift:talks.showTalks />
+	Please use this form to add a talk:
+	<lift:talks.addTalk form="POST">
+		<label for="authors">Authors:</label>
+		<br />
+		<ap:authors />
+		<br />
+		<label for="title">Title:</label>
+		<br />
+		<ap:title />
+		<br />
+		<label for="conference">Conference:</label>
+		<br />
+		<ap:conference />
+		<br />
+		<label for="tag">Tag:</label>
+		<br />
+		<ap:tag />
+		<br />
+		<label for="url">Url:</label>
+		<br />
+		<ap:url />
+		<br />
+		<label for="year">Year:</label>
+		<br />
+		<ap:year />
+		<br />
+		<ap:submit />
+		<br />
+		<ap:messages />
+	</lift:talks.addTalk>
 </div>
 
