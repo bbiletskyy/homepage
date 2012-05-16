@@ -1,7 +1,7 @@
 <div class="lift:surround?with=default;at=content">
 	<h2>Impressing</h2>
 	<h3>Add an Impressing Item</h3>
-	<p>
+	<div>
 		<lift:postImpressingItem.add form="POST">
 			<label for="title">Title:</label>
 			<ii:title />
@@ -10,11 +10,15 @@
 			<ii:content /><br/>
 			<label for="youtubeIds">Youtube id's:</label>
 			<ii:youtubeIds /><br />
+			<label for="urls">Urls:</label>
+			<ii:urls /><br />
 			<label for="tag">Tag:</label>
 			<ii:tag /><br />
 			<ii:submit />
 		</lift:postImpressingItem.add>
-	</p>
+	</div>
+	<div>
 	<lift:postImpressingItem.impressingItems />
+	</div>
 </div>
 

@@ -45,7 +45,6 @@ class Boot {
       Menu(Loc("Publications", Link("publications" :: Nil, true, "/publications/index.do"), "Publications"),
         Menu(Loc("Papers", Link("publications" :: "papers" :: Nil, true, "/publications/index.do"), "Papers")),
         Menu(Loc("Talks", Link("publications" :: "talks" :: Nil, true, "/publications/talks.do"), "Talks"))),
-      //Menu(Loc("About Myself", Link(List("aboutmyself"), true, "/aboutmyself.do"), "About Myself")),
       Menu(Loc("About Myself", Link("static" :: "aboutmyself" :: Nil, true, "/static/aboutmyself.do"), "About Myself")),
       Menu(Loc("Contact", Link("contact" :: Nil, true, "/contact.do"), "Contact")))
 

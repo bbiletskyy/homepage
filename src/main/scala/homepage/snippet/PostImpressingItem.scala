@@ -13,9 +13,9 @@ class PostImpressingItem {
   object titleReqVar extends RequestVar(Full(""))
   object contentReqVar extends RequestVar(Full(""))
   object youtubeIdsReqVar extends RequestVar(Full(""))
+  object urlsReqVar extends RequestVar(Full(""))
   object tagReqVar extends RequestVar(Full(""))
 
-  
   def add(xhtml: NodeSeq): NodeSeq = {
     if (validateReqVars) {
       val ii: ImpressingItem = ImpressingItem.create
@@ -25,17 +25,16 @@ class PostImpressingItem {
       "title" --> text("Title", v => titleReqVar(Full(v))) % ("size" -> "50") % ("id" -> "title"),
       "content" --> text("", v => contentReqVar(Full(v))) % ("size" -> "50") % ("id" -> "content"),
       "youtubeIds" --> text("", v => youtubeIdsReqVar(Full(v))) % ("size" -> "50") % ("id" -> "youtubeIds"),
+      "urls" --> text("", v => urlsReqVar(Full(v))) % ("size" -> "50") % ("id" -> "urls"),
       "tag" --> text("", v => tagReqVar(Full(v))) % ("size" -> "32") % ("id" -> "tag"),
       "submit" --> submit(?("Add Impressing Item"), () => {}))
   }
 
   private def validateReqVars: Boolean = {
-    val titleOk = !(titleReqVar.isEmpty || titleReqVar.open_!.length == 0)
-    val contentOk = !(contentReqVar.isEmpty || contentReqVar.open_!.length == 0)
-    val youtubeIdsOk = !(youtubeIdsReqVar.isEmpty || youtubeIdsReqVar.open_!.length == 0)
-    val tagOk = !(tagReqVar.isEmpty || tagReqVar.open_!.length == 0)
-    titleOk && contentOk && youtubeIdsOk && tagOk
+    def isValid(v: RequestVar[Full[String]]) = !(v.isEmpty || v.open_!.length() == 0)
+    
+    isValid(titleReqVar) && isValid(contentReqVar) && isValid(tagReqVar)
   }
 
-  def impressingItems(xhtml: NodeSeq): NodeSeq = ImpressingItem.findAll.map(i => <p>{ i.title } <br/> { i.content } - { i.youtubeIds } - { i.tag } </p>).toSeq
+  def impressingItems(xhtml: NodeSeq): NodeSeq = ImpressingItem.findAll.map(i => <div><strong>{ i.title }</strong> <br /> { i.content } <br /> { i.youtubeIds } { i.urls } - { i.tag } </div>).toSeq
 }
