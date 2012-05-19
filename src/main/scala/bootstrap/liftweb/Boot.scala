@@ -31,10 +31,7 @@ class Boot {
 
     // where to search snippet
     LiftRules.addToPackages("homepage")
-    Schemifier.schemify(true, Schemifier.infoF _, Message)
-    Schemifier.schemify(true, Schemifier.infoF _, ImpressingItem)
-    Schemifier.schemify(true, Schemifier.infoF _, Paper)
-    Schemifier.schemify(true, Schemifier.infoF _, Talk)
+    Schemifier.schemify(true, Schemifier.infoF _, Message, ImpressingItem, Talk)
 
     def sitemap() = SiteMap(
       Menu(Loc("Impressing", Link(List("index"), true, "/index.do"), "Impressing")),
