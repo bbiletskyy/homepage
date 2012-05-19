@@ -36,5 +36,5 @@ class PostImpressingItem {
     isValid(titleReqVar) && isValid(contentReqVar) && isValid(tagReqVar)
   }
 
-  def impressingItems(xhtml: NodeSeq): NodeSeq = ImpressingItem.findAll.map(i => <div><strong>{ i.title }</strong> <br /> { i.content } <br /> { i.youtubeIds } { i.urls } - { i.tag } </div>).toSeq
+  //def impressingItems(xhtml: NodeSeq): NodeSeq = ImpressingItem.findAll.map(i => <div><strong>{ i.title }</strong> <br /> { i.content } <br /> { i.youtubeIds } { i.urls } - { i.tag } </div>).toSeq
 }

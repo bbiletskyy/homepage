@@ -15,7 +15,7 @@ class ImpressingItem extends KeyedMapper[Long, ImpressingItem] {
   object title extends MappedString(this, 1024)
   object content extends MappedText(this)
   object youtubeIds extends MappedString(this, 64)
-  object urls extends MappedString(this, 64)
+  object urls extends MappedString(this, 1024)
   object tag extends MappedString(this, 64)
 
 }
