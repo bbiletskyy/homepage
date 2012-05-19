@@ -32,9 +32,7 @@ class PostImpressingItem {
 
   private def validateReqVars: Boolean = {
     def isValid(v: RequestVar[Full[String]]) = !(v.isEmpty || v.open_!.length() == 0)
-    
     isValid(titleReqVar) && isValid(contentReqVar) && isValid(tagReqVar)
   }
 
-  //def impressingItems(xhtml: NodeSeq): NodeSeq = ImpressingItem.findAll.map(i => <div><strong>{ i.title }</strong> <br /> { i.content } <br /> { i.youtubeIds } { i.urls } - { i.tag } </div>).toSeq
 }

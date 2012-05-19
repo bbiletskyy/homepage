@@ -1,7 +1,13 @@
 <div class="lift:surround?with=default;at=content">
 	<h2>Impressing</h2>
-
-	<lift:ImpressingItems />
+	     
+	<lift:impressingItems.filter form="post">
+		In this section you can find a number of interesting facts listed which you can filter by tag:
+		<f:tag />
+		<f:submit />
+	</lift:impressingItems.filter>
+	<br/> 
+	<lift:impressingItems />
 	<!-- 
 	<h3>Add an Impressing Item</h3>
 	<div>
