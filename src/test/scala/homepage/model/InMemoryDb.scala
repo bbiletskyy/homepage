@@ -1,11 +1,9 @@
 package homepage.model
-import net.liftweb.db.StandardDBVendor
-import net.liftweb.common.Empty
-
-import net.liftweb.mapper._
 import net.liftweb.common._
+import net.liftweb.common.Empty
+import net.liftweb.db.StandardDBVendor
+import net.liftweb.mapper._
 import net.liftweb.util._
-import java.sql._
 
 object InMemoryDb {
   val vendor =
@@ -20,4 +18,7 @@ object InMemoryDb {
     Schemifier.schemify(true, Schemifier.infoF(_), ImpressingItem)
   }
 
+  
+  
+  
 }
