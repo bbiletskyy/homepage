@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<TITLE>Borys' jsMath (Test)</TITLE>
+</HEAD>
+<BODY>
+
+<SCRIPT>
+  jsMath = {
+    Controls: {cookie: {scale: 133, font:'image', autofont:0}},
+    Parser: {prototype: {
+      macros: {warning: ["Macro","\\color{##00CC00}{\\rm jsMath\\ image\\ mode\\ appears\\ to\\ be\\  working!}",1]}
+    }}
+  }
+</SCRIPT>
+
+<SCRIPT SRC="../jsMath.js"></SCRIPT>
+<NOSCRIPT>
+<DIV STYLE="color:#CC0000; text-align:center">
+<B>Warning: <A HREF="http://www.math.union.edu/locate/jsMath">jsMath</A>
+requires JavaScript to process the mathematics on this page.<BR>
+If your browser supports JavaScript, be sure it is enabled.<B>
+</DIV>
+</NOSCRIPT>
+
+
+<H1>jsMath Image Mode Test Page</H1>
+
+
+
+<DIV CLASS="math">
+\left(\, \sum_{k=1}^n a_k b_k \right)^2 \le
+\left(\, \sum_{k=1}^n a_k^2 \right) \left(\, \sum_{k=1}^n b_k^2 \right)
+</DIV>
+<p>
+
+<DIV CLASS="math" STYLE="color:red">
+\warning{ &nbsp; &nbsp; &nbsp; jsMath image mode is not working! &nbsp; &nbsp; &nbsp; }
+</DIV>
+
+
+<SCRIPT>
+jsMath.Controls.cookie.autofont = 0;
+jsMath.Controls.cookie.font = "image";
+jsMath.Process(document);
+</SCRIPT>
+
+
+</BODY>
+</HTML>

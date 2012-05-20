@@ -1,0 +1,52 @@
+<html>
+<head>
+</head>
+<body>
+
+Hello, thsi is jsMathTest.<span class="math">\omega</span> How much is it?<br/>
+Let <span class="math">\omega</span>  be configuration of the system and <span class="math">\Omega</span> be the set of all configurations. We define systems dynamics in such way that probability to find system in configuration <span class="math">\omega</span> is 
+<div class="math">p(\omega)={1 \over Z} e^{-E(\omega)},
+</div>
+where
+<div class="math">
+Z=\mathop{\sum}_{\omega \in \Omega}e^{-E(\omega)}.
+</div>
+After that we are to define bounded energy function <span class="math">E:\Omega \rightarrow \mathbb{R}, \vert E(\omega) \vert < \infty, \forall \omega \in \Omega</span>
+
+
+<SCRIPT>
+	jsMath = {
+		Controls : {
+			cookie : {
+				scale : 100,
+				font : 'image',
+				printwarn : 0,
+				autofont : 0
+			}
+		}
+	}
+</SCRIPT>
+
+<SCRIPT SRC="jsMath/jsMath.js"></SCRIPT>
+<NOSCRIPT>
+<DIV STYLE="color: #CC0000; text-align: center"><B>This page
+uses javascript library <A
+	HREF="http://www.math.union.edu/locate/jsMath">jsMath</A> to display
+mathematics.<BR>
+If your browser supports JavaScript, be sure it is enabled.<B></DIV>
+</NOSCRIPT>
+
+<SCRIPT>
+	jsMath.Controls.cookie.autofont = 0;
+	jsMath.Controls.cookie.font = "image";
+	jsMath.Process(document);
+</SCRIPT>
+
+<SCRIPT>
+	jsMath.Controls.cookie.autofont = 0;
+	jsMath.Controls.cookie.font = "image";
+	jsMath.Process(document);
+</SCRIPT>
+
+</body>
+</html>

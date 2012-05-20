@@ -8,39 +8,18 @@ import net.liftweb.util.Helpers._
 import net.liftweb.common.Full
 import homepage.model.Paper
 import homepage.model.Talk
+import net.liftweb.mapper.OrderBy
+import net.liftweb.mapper.Descending
 
 class Talks {
 
-  def showTalks(xhtml: NodeSeq): NodeSeq = {
-    val talks = Talk.findAll.map(p => p.title).mkString("; ")
-    <div>{ talks }</div>
-  }
+  def showTalks(xhtml: NodeSeq): NodeSeq = Talk.findAll(OrderBy(Talk.year, Descending)).map { t =>
+      <div>
+        <strong>{ t.title.is }</strong>&nbsp;({t.year.is })<br/>
+        <i>{ t.authors.is }</i> at { conferenceXhtml(t) }<br/><br/>
+      </div>
+    }.toSeq
 
-  def addTalk(xhtml: NodeSeq): NodeSeq = {
-    object authorsReqVar extends RequestVar(Full(""))
-    object titleReqVar extends RequestVar(Full(""))
-    object conferenceReqVar extends RequestVar(Full(""))
-    object tagReqVar extends RequestVar(Full(""))
-    object urlReqVar extends RequestVar(Full(""))
-    object yearReqVar extends RequestVar(Full(""))
-
-    def isEmpty(r: RequestVar[Full[String]]): Boolean = r.isEmpty || r.open_!.length == 0
-    def fieldsValid = !(isEmpty(authorsReqVar) || isEmpty(titleReqVar) || isEmpty(conferenceReqVar) || isEmpty(tagReqVar) || isEmpty(urlReqVar) || isEmpty(yearReqVar))
-
-    if (fieldsValid) {
-      val talk: Talk = Talk.create
-      talk.authors(authorsReqVar.open_!).title(titleReqVar.open_!).conference(conferenceReqVar.open_!).tag(tagReqVar.open_!).url(urlReqVar.open_!).year(yearReqVar.open_!).save
-    }
-
-    bind("ap", xhtml,
-      "authors" --> text("", v => authorsReqVar(Full(v))) % ("size" -> "50") % ("id" -> "authors"),
-      "title" --> text("", v => titleReqVar(Full(v))) % ("size" -> "50") % ("id" -> "title"),
-      "conference" --> text("", v => conferenceReqVar(Full(v))) % ("size" -> "50") % ("id" -> "conference"),
-      "tag" --> text("", v => tagReqVar(Full(v))) % ("size" -> "50") % ("id" -> "tag"),
-      "url" --> text("", v => urlReqVar(Full(v))) % ("size" -> "50") % ("id" -> "url"),
-      "year" --> text("", v => yearReqVar(Full(v))) % ("size" -> "4") % ("id" -> "year"),
-      "submit" --> submit(?("Add Talk"), () => {}),
-      "messages" --> <div>Status</div>)
-  }
-
+  def conferenceXhtml(t: Talk) = if (t.url.isEmpty() || t.url.is.isEmpty()) <span>{ t.conference.is }</span> else
+    <a href={ t.url.is } alt={ "Go to conference site" } title={ "Go to conference site" }>{ t.conference.is }</a>
 }

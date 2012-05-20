@@ -11,9 +11,6 @@ class Image {
 }
 
 object Image {
-  def main(args: Array[String]) {
-    val s = "123" :: "" :: "abs" :: Nil
-    println(s.filter(s => s.length() != 0))
-  }
+ 
 }
 

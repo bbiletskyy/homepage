@@ -1,0 +1,34 @@
+<lift:surround with="default" at="content">
+	<div id="math-content">
+		<!-- The HTML content will go here -->
+	</div>
+	<span class="math">7 + 8 = 15</span>
+	<script>
+		jsMath = {
+			Controls : {
+				cookie : {
+					scale : 100,
+					font : 'image',
+					printwarn : 0,
+					autofont : 0
+				}
+			}
+		}
+	</script>
+
+	<script src="/js/jsMath/jsMath.js"></script>
+	<noscript>
+		<div STYLE="color: #CC0000; text-align: center">
+			<b>This page uses javascript library <a
+				href="http://www.math.union.edu/locate/jsMath">jsMath</a> to display
+				mathematics.<br /> If your browser supports JavaScript, be sure
+				it is enabled.</b>
+		</div>
+	</noscript>
+
+	<script>
+		jsMath.Controls.cookie.autofont = 0;
+		jsMath.Controls.cookie.font = "image";
+		jsMath.Process(document);
+	</script>
+</lift:surround>

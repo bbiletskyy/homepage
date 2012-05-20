@@ -13,7 +13,7 @@ object AppTest {
     suite
   }
 
-  def main(args : Array[String]) {
+  def main(args: Array[String]) {
     _root_.junit.textui.TestRunner.run(suite)
   }
 }
@@ -38,11 +38,11 @@ class AppTest extends TestCase("app") {
   def testXml() = {
     var failed: List[File] = Nil
 
-    def handledXml(file: String) =
-      file.endsWith(".xml")
-
-    def handledXHtml(file: String) =
-      file.endsWith(".html") || file.endsWith(".htm") || file.endsWith(".xhtml")
+    def handledXml(file: String) = file.endsWith(".xml")
+    
+    //jsMath mal-formatted htmls are not testsed
+    def handledXHtml(file: String) = !file.contains("jsMath") && 
+    	(file.endsWith(".html") || file.endsWith(".htm") || file.endsWith(".xhtml"))
 
     def wellFormed(file: File) {
       if (file.isDirectory)

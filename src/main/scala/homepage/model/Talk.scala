@@ -3,7 +3,7 @@ import net.liftweb.mapper._
 
 object Talk extends Talk with KeyedMetaMapper[Long, Talk] {
   override def dbTableName = "talk"
-  override def fieldOrder = id :: authors :: title :: conference :: url :: year :: tag :: Nil
+  override def fieldOrder = id :: authors :: title :: conference :: url :: Nil
 }
 
 class Talk extends KeyedMapper[Long, Talk] {
@@ -15,6 +15,5 @@ class Talk extends KeyedMapper[Long, Talk] {
   object title extends MappedString(this, 1024)
   object conference extends MappedString(this, 1024)
   object url extends MappedString(this, 1024)
-  object year extends MappedString(this, 4)
-  object tag extends MappedString(this, 64)
+  object year extends MappedInt(this)
 }
