@@ -1,14 +1,6 @@
 # Properties in this file will be read when running in dev mode
-#localhost db
-db.driver=com.mysql.jdbc.Driver
-db.url=jdbc:mysql://localhost:3306/lift
-db.user=root
-db.password=root
-
-#mochahost db 
-#db.driver=com.mysql.jdbc.Driver
-#db.url=jdbc:mysql://50.31.138.79:3306/biletsky_homapage
-#db.user=biletsky_root
-#db.password=root
-
- 
+#in-memory db 
+db.driver=org.h2.Driver
+db.url=jdbc:h2:lift_proto.db;AUTO_SERVER=TRUE
+db.user=
+db.password=
