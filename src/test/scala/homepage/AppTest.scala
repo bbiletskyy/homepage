@@ -39,10 +39,12 @@ class AppTest extends TestCase("app") {
     var failed: List[File] = Nil
 
     def handledXml(file: String) = file.endsWith(".xml")
+
+    /** Filters the files to be checked for xml validity. All jsMath html files are excluded. */
+    def handledXHtml(file: String) = !file.contains("jsMath") &&
+        (file.endsWith(".html") || file.endsWith(".htm") || file.endsWith(".xhtml"))
     
-    //jsMath mal-formatted htmls are not testsed
-    def handledXHtml(file: String) = !file.contains("jsMath") && 
-    	(file.endsWith(".html") || file.endsWith(".htm") || file.endsWith(".xhtml"))
+    
 
     def wellFormed(file: File) {
       if (file.isDirectory)
@@ -64,7 +66,7 @@ class AppTest extends TestCase("app") {
       }
       */
 
-      if (file.isFile && file.exists && handledXHtml(file.getName)) {
+      if (file.isFile && file.exists && handledXHtml(file.getPath)) {
         PCDataXmlParser(new _root_.java.io.FileInputStream(file.getAbsolutePath)) match {
           case Full(_) => // file is ok
           case _ => failed = file :: failed
