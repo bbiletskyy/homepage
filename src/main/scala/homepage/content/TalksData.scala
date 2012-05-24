@@ -35,12 +35,11 @@ def vendorInMemory = new StandardDBVendor("org.h2.Driver", "jdbc:h2:lift_proto.d
     Talk.create.authors(words(0)).title(words(1)).conference(words(2)).year(words(3).toInt).url(words(4))
   }
 
-  //ISO-8859-1, UTF-8
   def talksFromFile(path: String): List[Talk] = Source.fromFile(path).getLines().drop(1).map(talkFromLine).toList
 
   def main(args: Array[String]) {
     recreateTable
-    talksFromFile("D:/Workspaces/Scala/Lift/homepage/doc/talks.txt").foreach(_.save)
-    println("Talks created: " + Paper.count)
+    talksFromFile("src/main/resources/talks.txt").foreach(_.save)
+    println("Added " + Talk.count + " talks")
   }
 }
