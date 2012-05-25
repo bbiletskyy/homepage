@@ -14,18 +14,18 @@ import net.liftweb.http.SHtml
 import net.liftweb.common.Full
 import net.liftweb.http.RequestVar
 import net.liftweb.mapper.By
+import net.liftweb.http.S
+import net.liftweb.http.js.JsCmds.RedirectTo
+import net.liftweb.http.js.JsCmd
 
 class ImpressingItems {
   val ALL_TAGS = "All"
   object currentTagFilter extends RequestVar(Full(ALL_TAGS))
 
-  def filter(xhtml: NodeSeq): NodeSeq = {
-    val tags = ALL_TAGS :: ImpressingItem.findAll().map(i => if (!i.tag.isEmpty) i.tag.is else "").removeDuplicates.filter(!_.isEmpty)
-    bind("f", xhtml,
-      "tag" -> selectObj[String](tags.map(t => (t, t)), currentTagFilter, selected => currentTagFilter(Full(selected))),
-      "submit" -> submit("Filter", () => {}))
-  }
-
+  def filter = "name=tag" #> SHtml.ajaxSelect(tags.map(t => (t.toString, t.toString)), currentTagFilter, onSelect(_))
+  
+  def tags = ALL_TAGS :: ImpressingItem.findAll().map(i => if (!i.tag.isEmpty) i.tag.is else "").removeDuplicates.filter(!_.isEmpty)
+  
   def items = currentTagFilter.open_! match {
     case ALL_TAGS => ImpressingItem.findAll.sortBy(i => Random.nextInt).map(itemXhtml(_))
     case _ => ImpressingItem.findAll(By(ImpressingItem.tag, currentTagFilter.open_!)).map(itemXhtml(_))
@@ -51,5 +51,9 @@ class ImpressingItems {
     if (i.youtubeIds.isEmpty() || i.youtubeIds.is.isEmpty()) NodeSeq.Empty else
       i.youtubeIds.is.split(";").map(id => id2html(id)).toSeq ++ <br/>
   }
+
+  private def onSelect(v: String): JsCmd = RedirectTo(S.referer openOr "/", () => {
+    currentTagFilter(Full(v))
+  })
 
 }

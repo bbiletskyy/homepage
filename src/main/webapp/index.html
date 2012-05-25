@@ -1,11 +1,12 @@
 <div class="lift:surround?with=default;at=content">
 	<h2>Impressing</h2>
-	<lift:impressingItems.filter form="post">
+	<form class="lift:form.ajax">
 		In this section you can find a number of interesting facts. You can filter them by tag:
-		<f:tag />
-		<f:submit />
-	</lift:impressingItems.filter>
-	<br/> 
-	<lift:impressingItems.items />
+		<span class="lift:impressingItems.filter">
+			<input name="tag"/>
+		</span>
+	</form>
+	<br/>
+	<div class="lift:impressingItems.items" ></div>
 </div>
 
