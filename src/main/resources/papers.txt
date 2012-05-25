@@ -1,0 +1,15 @@
+Authors	Title	Journal	Year	Url
+Boris A. Beletskiy	Modeling of Multicomponent Systems	Journal of Automation and Information Sciences	2011	http://www.begellhouse.com/journals/2b6239406278e43e,4954299142b166b3,22e873322ca2b0c8.html
+B. A. Beletskiy 	Collective Processes Modeling by Means of Particles with Complex Structure	Journal of Automation and Information Sciences	2011	http://www.begellhouse.com/journals/2b6239406278e43e,4f1ac4a15c18586e,40a172347e5fd2bb.html
+V. O. Kitam, B. A. Beletskiy, A. M. Gupal, N. A. Chashchin	Determination of the Secondary Structure of Membrane-associated Proteins in Case of Human Cytochrome	Journal of Automation and Information Sciences	2010	http://www.begellhouse.com/journals/2b6239406278e43e,2fbf8c5471761c8f,619a662761980f8a.html
+B. A. Biletskyi, A. A. Boichuk,  A. A. Pokutnyi	Periodic Solutions of Difference Equations and Ergodic Theory	Abstract and Applied Analysis	2011	http://www.hindawi.com/journals/aaa/2011/928587/
+B. A. Biletskyy, A. M. Gupal	Statistical Analysis of Protein Recording in Bacterial Genomes	Computer Mathematics	2006	
+B. A. Biletskyy, A. M. Gupal	Statistical Analysis of Plant Genomes	Reports of National Academy of Sciences of Ukraine	2006	
+B. A. Biletskyy	Statistical Analysis of Bacteria Genomes. Complementarity Principles of Bases	Journal of Automation and Information Sciences	2005	http://www.begellhouse.com/journals/2b6239406278e43e,01d0c6af235b3d97,49135e62374634df.html
+I. V. Sergienko, V. V. Ryazanov, B. A. Biletskyy, A. V. Byts, A. M. Gupal and S. S. Rzhepeskyy	Methods to Predict Protein Spatial Structure	Cybernetics and Systems Analysis	2010	http://www.springerlink.com/content/v276g7292q34r777/
+I. V. Sergienko, B. A. Biletskyy and A. M. Gupal	Predicting Torsion Angles in Amino Acid Protein Sequences Based on a Bayesian Classification Procedure on Markov Chains	Cybernetics and Systems Analysis	2010	http://www.springerlink.com/content/c8u62m4671567826/
+Boris A. Beletskiy, Sergey V. Vasilyev, Alexandra A. Vagis	Protein Secondary Structure Recognition Procedure	Journal of Automation and Information Sciences	2007	http://dl.begellhouse.com/journals/2b6239406278e43e,2aed04617948f36a,726c11d259700ac7.html
+I. V. Sergienko, B. A. Beletskii, S. V. Vasilyev and A. M. Gupal	Predicting Protein Secondary Structure Based on Bayesian Classification Procedures on Markovian Chains	Cybernetics and Systems Analysis	2007	http://www.springerlink.com/content/g87pm5t786k77880/
+Boris A. Beletskiy, Sergey V. Vasilyev, Anatoliy M. Gupal	Prediction of Secondary Structure of Proteins on the Basis of Bayesian Recognition Procedures	Journal of Automation and Information Sciences	2007	http://www.begellhouse.com/journals/2b6239406278e43e,17d08bdb62885d37,358048a2671c9375.html
+B. O. Biletskyy, A. A. Vagis, S. V. Vasilyev	Tests of the Hypothesis for Markov Chain Models	Computer Mathematics	2007	
+Boris A. Beletskiy, Alexandra A. Vagis, Sergey V. Vasilyev, Nikita A. Gupal	Complexity of Bayesian Procedure of Inductive Inference. Discrete Case	Journal of Automation and Information Sciences	2006	http://www.begellhouse.com/journals/2b6239406278e43e,483f536a262c21af,10d69cb91fb3b0f3.html

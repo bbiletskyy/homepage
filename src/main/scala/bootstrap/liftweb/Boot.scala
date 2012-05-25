@@ -1,15 +1,28 @@
 package bootstrap.liftweb
 
-import _root_.net.liftweb.util._
-import _root_.net.liftweb.common._
-import _root_.net.liftweb.http._
-import _root_.net.liftweb.http.provider._
-import _root_.net.liftweb.sitemap._
-import _root_.net.liftweb.sitemap.Loc._
-import Helpers._
-import _root_.net.liftweb.mapper.{ DB, ConnectionManager, Schemifier, DefaultConnectionIdentifier, StandardDBVendor }
-import _root_.java.sql.{ Connection, DriverManager }
-import _root_.homepage.model._
+import homepage.model.ImpressingItem
+import homepage.model.Message
+import homepage.model.Paper
+import homepage.model.Talk
+import javax.mail.Authenticator
+import javax.mail.PasswordAuthentication
+import net.liftweb.common.Full
+import net.liftweb.db.DB1.db1ToDb
+import net.liftweb.http.LiftRulesMocker.toLiftRules
+import net.liftweb.http.provider.HTTPRequest
+import net.liftweb.http.LiftRules
+import net.liftweb.http.S
+import net.liftweb.mapper.DefaultConnectionIdentifier
+import net.liftweb.mapper.StandardDBVendor
+import net.liftweb.mapper.DB
+import net.liftweb.mapper.Schemifier
+import net.liftweb.sitemap.Loc.LinkText.strToLinkText
+import net.liftweb.sitemap.Loc.Link
+import net.liftweb.sitemap.Loc
+import net.liftweb.sitemap.Menu
+import net.liftweb.sitemap.SiteMap
+import net.liftweb.util.Mailer
+import net.liftweb.util.Props
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -64,6 +77,14 @@ class Boot {
     //LiftRules.loggedInTest = Full(() => User.loggedIn_?)
 
     S.addAround(DB.buildLoanWrapper)
+
+    Mailer.authenticator = for {
+      user <- Props.get("mail.user")
+      pass <- Props.get("mail.password")
+    } yield new Authenticator {
+      override def getPasswordAuthentication =
+        new PasswordAuthentication(user, pass)
+    }
   }
 
   /**

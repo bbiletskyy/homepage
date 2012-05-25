@@ -4,3 +4,9 @@ db.driver=org.h2.Driver
 db.url=jdbc:h2:lift_proto.db;AUTO_SERVER=TRUE
 db.user=
 db.password=
+
+#mail settings
+mail.smtp.auth=true
+mail.user=oleksandr.b.site
+mail.password=siteOB1eMail
+mail.smtp.host=smtp.gmail.com

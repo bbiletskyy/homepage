@@ -1,0 +1,9 @@
+Authors	Title	Conference	Year	Url
+B. O. Biletskyy	Protein Interactions Modeling Uning Active Particles	Interbational Conference Dynamical Systems and Applications	2012	http://www.imath.kiev.ua/~cds/en/participants.php
+B. O. Biletskyy	Simulation of Intracellular Processes	4th CHAOS 2011 International Conference	2011	http://www.cmsim.org/chaos2011proceedings.html
+B. O. Biletskyy	Modeling of Intracellular Processes	International Workshop Problems of Decision Making Under Uncertainties 	2011	http://www.pdmu.univ.kiev.ua/PDMU_2011/home.html
+B. O. Biletskyy	Auto-oscillating Processes Modeling in Multi-agent Systems	International Workshop Problems of Decision Making Under Uncertainties	2009	http://www.pdmu.univ.kiev.ua/PDMU_2009_W/home.html
+A. O. Biletskyy, B. O. Biletskyy	Multi-agent Systems Modeling	International Conference Problems of Decision Making Under Uncertainties	2009	http://www.pdmu.univ.kiev.ua/PDMU_2009/home.html
+B. O. Biletskyy	Protein Secondary Structure Prediction	International Workshop Problems of Decision Making Under Uncertainties	2008	http://www.pdmu.univ.kiev.ua/PDMU_2008_W/home.html
+B. O. Biletskyy, N. A. Gupal	Prediction of Stock Price Dynamics	International Workshop Problems of Decision Making Under Uncertainties	2008	http://www.pdmu.univ.kiev.ua/PDMU_2008_W/home.html
+B. O. Biletskyy, S. V. Vasilyev	Prediction of Protein Secondary Structure on the Basis of Bayesian Recognition Procedure on Markov Chains	International Symposium the Issues of Optimization	2007	
