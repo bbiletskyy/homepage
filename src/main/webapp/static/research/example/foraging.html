@@ -1,0 +1,48 @@
+<div class="lift:surround?with=math;at=math-content">
+	<h2>Foraging</h2>
+	In this example the static red particles are gathered together by the
+	blue transport particles.
+	<br/>
+	<br/>
+	<div align="center">
+		<applet code="gui.example.ForagingExampleApplet" name="Simple applet"
+			width="520" height="210"
+			archive="/applet/particlez.jar, /applet/lib/scala-library.jar, /applet/lib/scala-swing.jar">
+			Loading applet failed. Please make sure that your browser supports
+			java applets, or that corresponding feature is enabled.</applet>
+	</div>
+	<br />All particles in the alphabet <span class="math">\rm A
+	</span> are composed of the basic particles from the set <span class="math">\rm
+		B=\{ o, f, er, ett, err, bct, uct \}</span> where:
+	<ul>
+		<li><span class="math">o</span> - water molecule;</li>
+		<li><span class="math">f</span> - floating particle with step 2;
+			<span class="math">(f, o)\rightarrow(o, f)</span></li>
+		<li><span class="math">er</span> - a charge that attracts
+			resource particles to each other, radius 2, charge -1;</li>
+		<li><span class="math">ett</span> - a charge that prevents
+			transport-transport binding, radius 0, charge 1;</li>
+		<li><span class="math">err</span> - a charge that prevents
+			transport particle binding to multiple resource particles, radius 0,
+			charge 1;</li>
+		<li><span class="math">bct</span> - interacting particle that
+			creates <span class="math">ct</span> bond: <span class="math">(bct,
+				\alpha)\rightarrow(ct[bct, \alpha], o), \alpha \not= o</span>;</li>
+		<li><span class="math">uct</span> - interacting particle that
+			destroys <span class="math">ct</span> bond: <span class="math">(ct[uct,
+				\alpha], o)\rightarrow,(uct, \alpha), \alpha \not= o</span>.</li>
+	</ul>
+	using the bonds from the set <span class="math">\Gamma=\{ c, ct
+		\}</span> where:
+	<ul>
+		<li><span class="math">c</span> - default bond that is used to
+			compose particles;</li>
+		<li><span class="math">ct</span> - bond that is used by transport
+			particle to bind to membrane or to resource.</li>
+	</ul>
+	The code of the red resource particle is <span class="math">c[er,c[err,err]]</span>.<br />
+	The code of the blue transport particle is <span class="math">c[f,c[ett,ett],bct,uct]</span>.
+	There are other particles possible within the alphabet <span class="math">\rm A</span>, performing the
+	similar transport function.
+</div>
+

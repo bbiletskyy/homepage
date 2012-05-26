@@ -17,12 +17,14 @@ import net.liftweb.mapper.StandardDBVendor
 import net.liftweb.mapper.DB
 import net.liftweb.mapper.Schemifier
 import net.liftweb.sitemap.Loc.LinkText.strToLinkText
+import net.liftweb.sitemap.LocPath.stringToLocPath
 import net.liftweb.sitemap.Loc.Link
 import net.liftweb.sitemap.Loc
 import net.liftweb.sitemap.Menu
 import net.liftweb.sitemap.SiteMap
 import net.liftweb.util.Mailer
 import net.liftweb.util.Props
+import Boot._
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -47,16 +49,19 @@ class Boot {
     Schemifier.schemify(true, Schemifier.infoF _, ImpressingItem, Paper, Talk, Message)
 
     def sitemap() = SiteMap(
-      Menu(Loc("Impressing", Link(List("index"), true, "/index.do"), "Impressing")),
-      Menu(Loc("Research", Link("static" :: "research" :: Nil, true, "/static/research/index.do"), "Research"),
-        Menu(Loc("Particlez", Link("static" :: "research" :: "particlez" :: Nil, true, "/static/research/index.do"), "Particlez")),
-        Menu(Loc("Example1", Link("static" :: "research" :: "example1" :: Nil, true, "/static/research/example1.do"), "Example1")),
-        Menu(Loc("Example2", Link("static" :: "research" :: "example2" :: Nil, true, "/static/research/example2.do"), "Example2"))),
-      Menu(Loc("Publications", Link("publications" :: Nil, true, "/publications/index.do"), "Publications"),
-        Menu(Loc("Papers", Link("publications" :: "papers" :: Nil, true, "/publications/index.do"), "Papers")),
-        Menu(Loc("Talks", Link("publications" :: "talks" :: Nil, true, "/publications/talks.do"), "Talks"))),
-      Menu(Loc("About", Link("static" :: "aboutmyself" :: Nil, true, "/static/aboutmyself.do"), "About")),
-      Menu(Loc("Contact", Link("contact" :: Nil, true, "/contact.do"), "Contact")))
+      Menu(loc("Impressing", "index" :: Nil)),
+      Menu(loc("Research", "static" :: "research" :: "index" :: Nil),
+        Menu(loc("Examples", "static" :: "research" :: "example" :: "index" :: Nil), 
+        	Menu(loc("BZ", "static" :: "research" :: "example" :: "BZ" :: Nil)),
+        	Menu(loc("Foraging", "static" :: "research" :: "example" :: "Foraging" :: Nil))
+        )
+      ),
+      Menu(Loc("Publications", Link("publications" :: Nil, true, "/publications/index.do"), "Publications"), 
+    	Menu(loc("Papers", "publications" :: "index" :: Nil)),
+    	Menu(loc("Talks", "publications" :: "talks" :: Nil))
+      ),
+      Menu(loc("About", "static" :: "aboutmyself" :: Nil)),
+      Menu(loc("Contact", "contact" :: Nil)))
 
     LiftRules.setSiteMapFunc(() => sitemap())
 
@@ -93,4 +98,11 @@ class Boot {
   private def makeUtf8(req: HTTPRequest) {
     req.setCharacterEncoding("UTF-8")
   }
+
 }
+
+object Boot {
+  /** A shortcut function */
+  def loc(name: String, path: List[String]) = Loc(name, Link(path, true, path.mkString("/", "/", ".do")), name)
+}
+
