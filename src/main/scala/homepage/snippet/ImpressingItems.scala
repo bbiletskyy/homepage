@@ -46,13 +46,13 @@ class ImpressingItems {
   private def itemVideosXhtml(i: ImpressingItem): NodeSeq = {
     def id2html(id: String) =
       <a href={ "http://www.youtube.com/watch?v=" + id }>
-        <img src={ "http://img.youtube.com/vi/" + id + "/2.jpg" } width={ "120" } height={ "90" } vspace={ "3" } hspace={ "3" } alt={ "Click to watch video" } title={ "Click to watch video" }/>
+        <img src={ "http://img.youtube.com/vi/" + id + "/2.jpg" } width="120" height="90" vspace="3" hspace="3" alt="Click to watch video" title="Click to watch video" />
       </a>
     if (i.youtubeIds.isEmpty() || i.youtubeIds.is.isEmpty()) NodeSeq.Empty else
       i.youtubeIds.is.split(";").map(id => id2html(id)).toSeq ++ <br/>
   }
 
-  private def onSelect(v: String): JsCmd = RedirectTo(S.referer openOr "/", () => {
+  private def onSelect(v: String): JsCmd = RedirectTo("/", () => {
     currentTagFilter(Full(v))
   })
 
